@@ -5,26 +5,22 @@ const BASE_URL = 'http://prueba-tecnica-api-tienda-moviles.onrender.com';
 
 class PhonesApi {
   async fetchAllProducts(): Promise<Phone[]> {
-    try{
-      const res = await fetch(`${BASE_URL}/products`, {
-        headers: { 'x-api-key': API_KEY }
-      });
-      if (!res.ok) throw new Error('Failed to fetch products');
-      const data = await res.json();
-      return data;
-    } catch (error) {
-      console.error('Error fetching products on server:', error);
-      throw error;
-    }
+    return this.tryFetch(`${BASE_URL}/products`);
   }
 
   async fetchProductById(id: PhoneDetail['id']): Promise<PhoneDetail> {
-    const res = await fetch(`${BASE_URL}/products/${id}`, {
-      headers: { 'x-api-key': API_KEY }
-    });
-    if (!res.ok) throw new Error('Failed to fetch product with id: ' + id);
-    const data = await res.json();
-    return data;
+    return this.tryFetch(`${BASE_URL}/products/${id}`);
+  }
+
+  async tryFetch(url: string, options: RequestInit = {}) {
+    try {
+      const res = await fetch(url, { ...options, headers: { 'x-api-key': API_KEY } });
+      if (!res.ok) throw new Error('Failed to fetch');
+      return await res.json();
+    } catch (error) {
+      console.error('Error fetching PhonesApi:', error);
+      throw error;
+    }
   }
 }
 
