@@ -148,6 +148,10 @@
   margin-top: var(--spacing-8);
 }
 
+.product-info > * + * {
+  margin-top: var(--spacing-6);
+}
+
 // Positioning
 .relative {
   position: relative;
@@ -245,4 +249,21 @@
 
 .mt-12 {
   margin-top: var(--spacing-12);
+}
+
+// Page-specific layouts
+.home-header {
+  margin-bottom: var(--spacing-12);
+}
+
+.cart-header {
+  margin-bottom: var(--spacing-8);
+}
+
+.cart-empty-content {
+  padding: var(--spacing-16) 0;
+}
+
+.cart-empty-text {
+  margin-bottom: var(--spacing-8);
 } 

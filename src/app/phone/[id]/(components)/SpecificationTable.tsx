@@ -12,10 +12,10 @@ interface SpecRowProps {
 function SpecRow({ label, value }: SpecRowProps) {
   return (
     <tr>
-      <td className="px-6 py-4 text-sm font-medium text-gray-900 bg-gray-50 w-1/4">
+      <td className="table__cell table__cell--label">
         {label}
       </td>
-      <td className="px-6 py-4 text-sm text-gray-700">
+      <td className="table__cell table__cell--value">
         {value}
       </td>
     </tr>
@@ -24,13 +24,13 @@ function SpecRow({ label, value }: SpecRowProps) {
 
 export default function SpecificationTable({ phone }: SpecificationTableProps) {
   return (
-    <div className="mb-12">
-      <h2 className="text-lg font-bold text-gray-900 mb-6 uppercase tracking-wider">
+    <div className="specification-table">
+      <h2 className="table-container__title">
         Specifications
       </h2>
-      <div className="bg-white border rounded-lg overflow-hidden">
-        <table className="w-full">
-          <tbody className="divide-y divide-gray-200">
+      <div className="table-container__wrapper">
+        <table className="table">
+          <tbody className="table__body">
             <SpecRow label="BRAND" value={phone.brand} />
             <SpecRow label="MODEL" value={phone.name} />
             <SpecRow 

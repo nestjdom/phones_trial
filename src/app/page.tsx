@@ -7,7 +7,7 @@ export default async function HomePage() {
   return (
     <div className="page-container">
       <div className="container py-8">
-        <div className="text-center mb-12">
+        <div className="text-center home-header">
           <h1 className="heading--h1">
             📱MOBEST
           </h1>

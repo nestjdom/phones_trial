@@ -9,17 +9,16 @@ interface ProductImageProps {
 export default function ProductImage({ 
   src, 
   alt, 
-  className = "w-80 h-96 bg-gray-50 rounded-lg flex items-center justify-center border" 
+  className = "product-image__wrapper" 
 }: ProductImageProps) {
   return (
-    <div className="flex justify-center">
+    <div className="product-image">
       <div className={className}>
         <Image
           src={src}
           alt={alt}
           width={400} 
           height={256}
-          className="max-w-full max-h-full object-contain p-4"
         />
       </div>
     </div>

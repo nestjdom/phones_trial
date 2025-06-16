@@ -18,16 +18,16 @@ export default function CartPage() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="min-h-screen bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center py-16">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">📱MOBEST</h1>
-            <div className="border-t border-gray-200 pt-8">
-              <h2 className="text-lg font-medium text-gray-900 mb-4">CART (0)</h2>
-              <p className="text-gray-600 mb-8">Tu carrito está vacío</p>
+      <div className="page-container">
+        <div className="container-md py-8">
+          <div className="text-center cart-empty-content">
+            <h1 className="heading--h2 mb-4">📱MOBEST</h1>
+            <div className="cart-empty">
+              <h2 className="text--lg text--medium text--gray-900 mb-4">CART (0)</h2>
+              <p className="text--gray-600 cart-empty-text">Tu carrito está vacío</p>
               <Link
                 href="/"
-                className="inline-block bg-gray-200 text-gray-800 px-6 py-2 text-sm uppercase tracking-wide hover:bg-gray-300 transition-colors"
+                className="btn btn--secondary"
               >
                 Continue Shopping
               </Link>
@@ -39,15 +39,15 @@ export default function CartPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div className="page-container">
+      <div className="container-lg py-6">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">📱MOBEST</h1>
+        <div className="text-center cart-header">
+          <h1 className="heading--h2 mb-4">📱MOBEST</h1>
         </div>
 
-        <div className="border-t border-gray-200 pt-8">
-          <h2 className="text-lg font-medium text-gray-900 mb-8 uppercase tracking-wide">
+        <div className="cart-content">
+          <h2 className="cart-title">
             CART ({cartItems.length})
           </h2>
 
@@ -58,63 +58,62 @@ export default function CartPage() {
               const totalItemPrice = itemPrice * item.quantity;
 
               return (
-                <div key={index} className="border-2 border-purple-400 rounded-lg p-6">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div key={index} className="cart-item-card">
+                  <div className="cart-item-card__grid">
                     {/* Product Image */}
-                    <div className="flex justify-center">
-                      <div className="w-48 h-64 bg-gray-50 rounded-lg flex items-center justify-center border">
+                    <div className="cart-item-card__image-container">
+                      <div className="cart-item-card__image-wrapper">
                         <Image
                           src={item.selectedColor.imageUrl}
                           alt={item.phone.name}
                           fill
                           sizes="96px"
-                          className="max-w-full max-h-full object-contain p-4"
                         />
                       </div>
                     </div>
 
                     {/* Product Info */}
-                    <div className="space-y-6">
+                    <div className="cart-item-card__content">
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 uppercase tracking-wide">
+                        <h3 className="cart-item-card__title">
                           {item.phone.name}
                         </h3>
-                        <p className="text-sm text-gray-600 mt-1">
+                        <p className="cart-item-card__subtitle">
                           {item.selectedStorage.capacity} | {item.selectedColor.name}
                         </p>
-                        <p className="text-sm text-gray-600 mt-2">
+                        <p className="cart-item-card__storage">
                           {itemPrice.toLocaleString()} EUR
                         </p>
                       </div>
 
                       {/* Color Display */}
-                      <div>
-                        <p className="text-xs font-semibold text-gray-700 mb-2 uppercase tracking-wider">
+                      <div className="cart-item-card__color-section">
+                        <p className="cart-item-card__color-section-title">
                           Color
                         </p>
-                        <div className="flex gap-2">
+                        <div className="cart-item-card__color-section-options">
                           <div
-                            className="w-6 h-6 rounded-full border border-gray-300"
+                            className="cart-item-card__color-section-option"
                             style={{ backgroundColor: item.selectedColor.hexCode }}
                           />
                         </div>
                       </div>
 
                       {/* Quantity Controls */}
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-4">
+                      <div className="cart-item-card__quantity">
+                        <div className="cart-item-card__quantity-controls">
                           <button
                             onClick={() => handleQuantityChange(index, item.quantity - 1)}
-                            className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-100"
+                            className="quantity-btn"
                           >
                             -
                           </button>
-                          <span className="text-lg font-medium w-8 text-center">
+                          <span className="cart-item-card__quantity-value">
                             {item.quantity}
                           </span>
                           <button
                             onClick={() => handleQuantityChange(index, item.quantity + 1)}
-                            className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-100"
+                            className="quantity-btn"
                           >
                             +
                           </button>
@@ -122,15 +121,15 @@ export default function CartPage() {
 
                         <button
                           onClick={() => removeFromCart(index)}
-                          className="text-red-500 text-sm uppercase tracking-wide hover:text-red-700"
+                          className="cart-item-card__quantity-remove"
                         >
                           Remove
                         </button>
                       </div>
 
                       {/* Item Total */}
-                      <div className="text-right">
-                        <span className="text-lg font-bold text-gray-900">
+                      <div className="cart-item-card__price">
+                        <span className="cart-item-card__price-value">
                           {totalItemPrice.toLocaleString()} EUR
                         </span>
                       </div>
@@ -142,27 +141,27 @@ export default function CartPage() {
           </div>
 
           {/* Cart Actions */}
-          <div className="mt-12 space-y-6">
-            <div className="flex justify-between items-center">
+          <div className="cart-actions">
+            <div className="cart-actions__header">
               <Link
                 href="/"
-                className="bg-gray-200 text-gray-800 px-6 py-3 text-sm uppercase tracking-wide hover:bg-gray-300 transition-colors"
+                className="btn btn--secondary"
               >
                 Continue Shopping
               </Link>
               
-              <div className="text-right">
-                <div className="text-sm text-gray-600 mb-1">TOTAL</div>
-                <div className="text-xl font-bold text-gray-900">
+              <div className="cart-total">
+                <div className="cart-total__label">TOTAL</div>
+                <div className="cart-total__amount">
                   {getTotalPrice().toLocaleString()} EUR
                 </div>
               </div>
             </div>
 
-            <div className="text-right">
+            <div className="cart-actions__checkout">
               <button
                 onClick={() => alert('Funcionalidad de checkout no implementada en esta demo')}
-                className="bg-black text-white px-8 py-3 text-sm uppercase tracking-wide hover:bg-gray-800 transition-colors"
+                className="btn btn--primary btn--lg"
               >
                 Pay
               </button>

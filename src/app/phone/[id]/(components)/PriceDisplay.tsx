@@ -5,11 +5,11 @@ interface PriceDisplayProps {
 
 export default function PriceDisplay({ 
   price, 
-  className = "text-right" 
+  className = "text--right" 
 }: PriceDisplayProps) {
   return (
     <div className={className}>
-      <span className="text-2xl font-bold text-gray-900">
+      <span className="price--large">
         {price.toLocaleString()} EUR
       </span>
     </div>

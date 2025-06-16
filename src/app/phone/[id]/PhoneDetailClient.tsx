@@ -3,13 +3,13 @@
 import { useState } from 'react';
 import { PhoneDetail, PhoneColor, StorageOption } from '@/types/phone';
 import GoBackButton from '@/components/GoBackButton';
-import ProductImage from '@/app/phone/[id]/(components)/ProductImage';
-import ProductHeader from '@/app/phone/[id]/(components)/ProductHeader';
-import StorageSelector from '@/app/phone/[id]/(components)/StorageSelector';
-import ColorSelector from '@/app/phone/[id]/(components)/ColorSelector';
-import PriceDisplay from '@/app/phone/[id]/(components)/PriceDisplay';
-import AddToCartButton from '@/components/phone/AddToCartButton';
-import SpecificationTable from '@/app/phone/[id]/(components)/SpecificationTable';
+import AddToCartButton from '@/components/AddToCartButton';
+import ProductImage from './(components)/ProductImage';
+import ProductHeader from './(components)/ProductHeader';
+import StorageSelector from './(components)/StorageSelector';
+import ColorSelector from './(components)/ColorSelector';
+import PriceDisplay from './(components)/PriceDisplay';
+import SpecificationTable from './(components)/SpecificationTable';
 
 interface PhoneDetailClientProps {
   phone: PhoneDetail;
@@ -43,8 +43,11 @@ export default function PhoneDetailClient({ phone }: PhoneDetailClientProps) {
           <div className="grid grid--cols-1 grid--lg-cols-2 grid--gap-12">
             <ProductImage src={currentImage} alt={phone.name} />
 
-            <div className="space-y-6">
-              <ProductHeader name={phone.name} basePrice={phone.basePrice} />
+            <div className="product-info">
+              <ProductHeader 
+                name={phone.name} 
+                basePrice={phone.basePrice} 
+              />
 
               <StorageSelector
                 storageOptions={phone.storageOptions}

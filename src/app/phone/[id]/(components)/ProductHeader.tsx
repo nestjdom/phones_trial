@@ -5,11 +5,11 @@ interface ProductHeaderProps {
 
 export default function ProductHeader({ name, basePrice }: ProductHeaderProps) {
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-gray-900 uppercase tracking-wide">
+    <div className="product-header">
+      <h1 className="product-header__title">
         {name}
       </h1>
-      <p className="text-sm text-gray-600 mt-1">
+      <p className="product-header__subtitle">
         From {basePrice.toLocaleString()} EUR
       </p>
     </div>
