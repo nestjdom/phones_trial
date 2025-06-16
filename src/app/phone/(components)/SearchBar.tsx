@@ -1,47 +1,40 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
 
 interface SearchBarProps {
-  onSearch: (query: string) => void;
-  resultsCount?: number;
   placeholder?: string;
 }
 
-export default function SearchBar({ onSearch, resultsCount, placeholder = "Buscar teléfonos por nombre o marca..." }: SearchBarProps) {
-  const [query, setQuery] = useState('');
+export default function SearchBar({ placeholder = "Search for a smartphone..." }: SearchBarProps) {
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+  const pathname = usePathname();
 
-  useEffect(() => {
-    const delayedSearch = setTimeout(() => {
-      onSearch(query);
-    }, 300);
-
-    return () => clearTimeout(delayedSearch);
-  }, [query, onSearch]);
+  const handleSearch = useDebouncedCallback(term => {
+    const params = new URLSearchParams(searchParams);
+    if (term) {
+      params.set("search", term);
+    } else {
+      params.delete("search");
+    }
+    replace(`${pathname}?${params.toString()}`);
+  }, 300);
 
   return (
-    <div className="search-bar">
-      <div className="search-bar__container">
-        <div className="search-bar__icon">
-          🔍
-        </div>
+    <div className='search-bar'>
+      <div className='search-bar__container'>
+        <div className='search-bar__icon'>🔍</div>
         <input
-          type="text"
-          className="search-bar__input"
+          role='searchbox'
+          type='text'
+          className='search-bar__input'
           placeholder={placeholder}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={e => handleSearch(e.target.value)}
+          defaultValue={searchParams.get("search")?.toString()}
         />
       </div>
-      {typeof resultsCount === 'number' && (
-        <div className="search-bar__info">
-          {resultsCount === 0 ? (
-            'No se encontraron resultados'
-          ) : (
-            `${resultsCount} ${resultsCount === 1 ? 'resultado encontrado' : 'resultados encontrados'}`
-          )}
-        </div>
-      )}
     </div>
   );
-} 
+}

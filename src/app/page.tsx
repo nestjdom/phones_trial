@@ -1,23 +1,27 @@
 import PhoneList from "./phone/(components)/PhoneList";
-import { phonesApi } from "@/data/phonesApi";
 import { Metadata } from "next";
+import SearchBar from "./phone/(components)/SearchBar";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Phone Store",
   description: "Phone Store"
 };
 
-type Params = Promise<{ search: string }>;
-
-export default async function HomePage({ params }: { params: Params }) {
-  const { search } = await params;
-
-  const phones = await phonesApi.fetchAllProducts({ search: search as string });
+export default async function HomePage({ searchParams }: { searchParams: Promise<{ search?: string }> }) {
+  const { search } = await searchParams;
 
   return (
     <div className='page-container'>
       <div className='container py-8'>
-        <PhoneList initialPhones={phones} />
+        <h1>Home Page</h1>
+        <SearchBar />
+        {/* <div className='search-bar__info'>
+          {search.length === 0 ? "No results found" : `${search.length} ${search.length === 1 ? "RESULT" : "RESULTS"}`}
+        </div> */}
+        <Suspense fallback={<div>Loading...</div>}>
+          <PhoneList search={search} />
+        </Suspense>
       </div>
     </div>
   );
