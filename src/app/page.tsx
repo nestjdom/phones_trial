@@ -1,7 +1,6 @@
 import PhoneList from "./phone/(components)/PhoneList";
 import { Metadata } from "next";
 import SearchBar from "./phone/(components)/SearchBar";
-import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Phone Store",
@@ -19,9 +18,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         {/* <div className='search-bar__info'>
           {search.length === 0 ? "No results found" : `${search.length} ${search.length === 1 ? "RESULT" : "RESULTS"}`}
         </div> */}
-        <Suspense fallback={<div>Loading...</div>}>
-          <PhoneList search={search} />
-        </Suspense>
+        <PhoneList search={search} />
       </div>
     </div>
   );
