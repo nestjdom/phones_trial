@@ -1,3 +1,4 @@
+import { texts } from '@/app/phone/(components)/PhoneList';
 import { test, expect } from '@playwright/test';
 
 const homeUrl = 'http://localhost:3000';
@@ -13,8 +14,18 @@ test('has everything rendered', async ({ page }) => {
 
 test('filters based on search params', async ({ page }) => {
   await page.goto(homeUrl);
+  await expect(page.getByRole('listitem')).toHaveCount(24);
+  
+  const searchBox = page.getByRole('searchbox', { name: 'Search for a smartphone...' });
+  await searchBox.clear();
+  await searchBox.fill('a15');
+  
+  await expect(page.getByText('1 RESULTS')).toBeVisible({ timeout: 10000 });
+  await expect(page.getByRole('listitem')).toHaveCount(1, { timeout: 10000 });
 
-  await page.getByRole('searchbox').fill('a15');
-
-  await expect(page.getByRole('listitem')).toHaveCount(1);
+  await searchBox.clear();
+  await searchBox.fill('nonExistingPhone');
+  
+  await expect(page.getByRole('listitem')).toHaveCount(0);
+  await expect(page.getByText(texts.noResults)).toBeVisible();
 });
