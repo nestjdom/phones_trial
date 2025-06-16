@@ -11,7 +11,8 @@ interface PhoneDetailPageProps {
 
 export default async function PhoneDetailPage({ params }: PhoneDetailPageProps) {
   try {
-    const phone = await phonesApi.fetchProductById(params.id);
+    const { id } = await params;
+    const phone = await phonesApi.fetchProductById(id);
     
     if (!phone) {
       notFound();

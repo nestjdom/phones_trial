@@ -1,7 +1,7 @@
 import { PhoneDetail, Phone } from '@/types/phone';
 
 const API_KEY = '87909682e6cd74208f41a6ef39fe4191';
-const BASE_URL = 'http://prueba-tecnica-api-tienda-moviles.onrender.com';
+const BASE_URL = 'https://prueba-tecnica-api-tienda-moviles.onrender.com';
 
 class PhonesApi {
   async fetchAllProducts(): Promise<Phone[]> {
