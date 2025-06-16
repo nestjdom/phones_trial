@@ -35,12 +35,12 @@ export default function PhoneDetailClient({ phone }: PhoneDetailClientProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div className="page-container">
+      <div className="container py-6">
         <GoBackButton />
 
-        <div className="border-2 border-blue-400 rounded-lg p-8 mb-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="phone-detail-card">
+          <div className="grid grid--cols-1 grid--lg-cols-2 grid--gap-12">
             <ProductImage src={currentImage} alt={phone.name} />
 
             <div className="space-y-6">

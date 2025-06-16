@@ -9,17 +9,15 @@ export default function AddToCartButton({
   className,
   label = "Add to Cart"
 }: AddToCartButtonProps) {
-  const defaultClassName = `w-full py-3 px-6 rounded font-semibold transition-colors ${
-    !!onAddToCart 
-      ? 'bg-blue-500 text-white hover:bg-blue-600'
-      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+  const buttonClassName = className || `btn btn--primary btn--full ${
+    !!onAddToCart ? '' : 'btn--disabled'
   }`;
 
   return (
     <button
       onClick={onAddToCart}
       disabled={!onAddToCart}
-      className={className || defaultClassName}
+      className={buttonClassName}
     >
       {label}
     </button>

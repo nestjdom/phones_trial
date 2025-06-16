@@ -20,20 +20,21 @@ export default function SearchBar({ onSearch, resultsCount, placeholder = "Busca
   }, [query, onSearch]);
 
   return (
-    <div className="w-full max-w-2xl mx-auto mb-6">
-      <div className="relative">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+    <div className="search-bar">
+      <div className="search-bar__container">
+        <div className="search-bar__icon">
+          🔍
         </div>
         <input
           type="text"
-          className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+          className="search-bar__input"
           placeholder={placeholder}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
       {typeof resultsCount === 'number' && (
-        <div className="mt-2 text-sm text-gray-600">
+        <div className="search-bar__info">
           {resultsCount === 0 ? (
             'No se encontraron resultados'
           ) : (

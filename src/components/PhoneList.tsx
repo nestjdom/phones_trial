@@ -60,28 +60,28 @@ export default function PhoneList({ initialPhones }: PhoneListProps) {
       />
 
       {loading && (
-        <div className="flex justify-center items-center py-12">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+        <div className="loading">
+          <div className="loading__spinner"></div>
         </div>
       )}
 
       {!loading && (
         <>
           {phones.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="text-gray-500">
+            <div className="empty-state">
+              <div className="empty-state__description">
                 {searchQuery ? 'No se encontraron teléfonos que coincidan con tu búsqueda' : 'No hay teléfonos disponibles'}
               </div>
             </div>
           ) : (
             <>
               {searchQuery && (
-                <div className="text-sm text-gray-600">
+                <div className="text--sm text--gray-600">
                   {totalResults} RESULTS
                 </div>
               )}
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              <div className="grid grid--cols-2 grid--sm-cols-3 grid--lg-cols-4 grid--xl-cols-5 grid--gap-4">
                 {phones.map((phone, index) => (
                   <PhoneCard 
                     key={phone.id + index} 

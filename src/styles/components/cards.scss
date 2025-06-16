@@ -1,0 +1,240 @@
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: var(--transition-shadow);
+  
+  &:hover {
+    box-shadow: var(--shadow-xl);
+  }
+  
+  &__image {
+    position: relative;
+    height: 16rem; // h-64
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: var(--spacing-4);
+      transition: var(--transition-transform);
+    }
+    
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+  
+  &__content {
+    padding: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+  
+  &__brand {
+    font-size: var(--text-xs);
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+  
+  &__title {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-gray-900);
+    line-height: var(--leading-tight);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  &__price {
+    text-align: right;
+    
+    &-value {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-gray-900);
+    }
+  }
+  
+  &--clickable {
+    cursor: pointer;
+    
+    &:hover {
+      .card__image img {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+// Phone detail card
+.phone-detail-card {
+  border: 2px solid var(--color-blue-400);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+}
+
+// Cart item card
+.cart-item-card {
+  border: 2px solid var(--color-purple-400);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+    
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  &__image-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  &__image-wrapper {
+    width: 12rem; // w-48
+    height: 16rem; // h-64
+    background-color: var(--color-gray-50);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-gray-200);
+    
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      padding: var(--spacing-4);
+    }
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+  }
+  
+  &__title {
+    font-size: var(--text-xl);
+    font-weight: bold;
+    color: var(--color-gray-900);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  &__subtitle {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    margin-top: var(--spacing-1);
+  }
+  
+  &__storage {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    margin-top: var(--spacing-2);
+  }
+  
+  &__color-section {
+    &-title {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-gray-700);
+      margin-bottom: var(--spacing-2);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    &-options {
+      display: flex;
+      gap: var(--spacing-2);
+    }
+    
+    &-option {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-gray-300);
+    }
+  }
+  
+  &__quantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    &-controls {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-4);
+    }
+    
+    &-value {
+      font-size: var(--text-lg);
+      font-weight: 500;
+      width: 2rem;
+      text-align: center;
+    }
+    
+    &-remove {
+      color: var(--color-red-500);
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition-colors);
+      
+      &:hover {
+        color: var(--color-red-700);
+      }
+    }
+  }
+  
+  &__price {
+    text-align: right;
+    
+    &-value {
+      font-size: var(--text-lg);
+      font-weight: bold;
+      color: var(--color-gray-900);
+    }
+  }
+}
+
+// Product image component
+.product-image {
+  display: flex;
+  justify-content: center;
+  
+  &__wrapper {
+    width: 20rem; // w-80
+    height: 24rem; // h-96
+    background-color: var(--color-gray-50);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-gray-200);
+    
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      padding: var(--spacing-4);
+    }
+  }
+} 

@@ -9,7 +9,7 @@ interface GoBackButtonProps {
 
 export default function GoBackButton({ 
   label = "← BACK", 
-  className = "flex items-center space-x-2 text-gray-600 hover:text-gray-900 mb-6 text-sm" 
+  className = "btn-go-back" 
 }: GoBackButtonProps) {
   const router = useRouter();
 

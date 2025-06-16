@@ -1,0 +1,165 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition-colors);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  &--disabled {
+    background-color: var(--color-gray-300);
+    color: var(--color-gray-500);
+    cursor: not-allowed;
+    
+    &:hover {
+      background-color: var(--color-gray-300);
+    }
+  }
+  
+  // Sizes
+  &--sm {
+    padding: var(--spacing-2) var(--spacing-3);
+    font-size: var(--text-sm);
+  }
+  
+  &--md {
+    padding: var(--spacing-3) var(--spacing-6);
+    font-size: var(--text-base);
+  }
+  
+  &--lg {
+    padding: var(--spacing-4) var(--spacing-8);
+    font-size: var(--text-lg);
+  }
+  
+  // Variants
+  &--primary {
+    background-color: var(--color-blue-500);
+    color: var(--color-white);
+    
+    &:hover:not(:disabled) {
+      background-color: var(--color-blue-600);
+    }
+  }
+  
+  &--secondary {
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-800);
+    
+    &:hover:not(:disabled) {
+      background-color: var(--color-gray-300);
+    }
+  }
+  
+  &--outline {
+    background-color: transparent;
+    border: 1px solid var(--color-gray-300);
+    color: var(--color-gray-700);
+    
+    &:hover:not(:disabled) {
+      background-color: var(--color-gray-50);
+      border-color: var(--color-gray-400);
+    }
+  }
+  
+  &--danger {
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    
+    &:hover:not(:disabled) {
+      background-color: var(--color-red-700);
+    }
+  }
+  
+  // Full width
+  &--full {
+    width: 100%;
+  }
+}
+
+.btn-go-back {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-gray-600);
+  background: none;
+  border: none;
+  font-size: var(--text-sm);
+  margin-bottom: var(--spacing-6);
+  cursor: pointer;
+  transition: var(--transition-colors);
+  
+  &:hover {
+    color: var(--color-gray-900);
+  }
+}
+
+// Storage selection button
+.storage-option {
+  padding: var(--spacing-2) var(--spacing-4);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  background-color: var(--color-white);
+  color: var(--color-gray-700);
+  cursor: pointer;
+  transition: var(--transition-colors);
+  
+  &:hover {
+    border-color: var(--color-gray-400);
+  }
+  
+  &--selected {
+    border-color: var(--color-blue-500);
+    background-color: var(--color-blue-50);
+    color: var(--color-blue-700);
+  }
+}
+
+// Color selection button
+.color-option {
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-gray-300);
+  cursor: pointer;
+  transition: var(--transition-transform);
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+  
+  &--selected {
+    border-color: var(--color-blue-500);
+    transform: scale(1.1);
+  }
+}
+
+// Cart quantity buttons
+.quantity-btn {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius);
+  background-color: var(--color-white);
+  color: var(--color-gray-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-colors);
+  
+  &:hover {
+    background-color: var(--color-gray-100);
+  }
+} 

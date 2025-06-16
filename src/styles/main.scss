@@ -1,0 +1,14 @@
+// Main SCSS file - replaces Tailwind CSS
+// Use order: globals, components
+
+// Base styles and variables
+@use 'globals';
+
+// Component styles
+@use 'components/layout';
+@use 'components/navbar';
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/forms';
+@use 'components/tables';
+@use 'components/typography'; 
