@@ -1,25 +1,18 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import SearchBar from '@/components/SearchBar';
-import PhoneCard from '@/components/PhoneCard';
+import SearchBar from './SearchBar';
+import PhoneCard from './PhoneCard';
 import { Phone } from '@/types/phone';
+import { phonesApi } from '@/data/phonesApi';
 
 interface PhoneListProps {
   initialPhones: Phone[];
 }
 
-interface PhonesResponse {
-  phones: Phone[];
-  total: number;
-  hasMore: boolean;
-}
-
 export default function PhoneList({ initialPhones }: PhoneListProps) {
   const [phones, setPhones] = useState<Phone[]>(initialPhones);
   const [loading, setLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [totalResults, setTotalResults] = useState(initialPhones.length);
 
   const fetchPhones = useCallback(async (search: string = '') => {
     setLoading(true);
@@ -30,11 +23,9 @@ export default function PhoneList({ initialPhones }: PhoneListProps) {
       }
       searchParams.append('limit', '20');
       
-      const response = await fetch(`/api/phones?${searchParams.toString()}`);
-      const data: PhonesResponse = await response.json();
+      const phones = await phonesApi.fetchAllProducts();
       
-      setPhones(data.phones);
-      setTotalResults(data.total);
+      setPhones(phones);
     } catch (error) {
       console.error('Error fetching phones:', error);
     } finally {
@@ -43,12 +34,10 @@ export default function PhoneList({ initialPhones }: PhoneListProps) {
   }, []);
 
   const handleSearch = useCallback((query: string) => {
-    setSearchQuery(query);
     if (query) {
       fetchPhones(query);
     } else {
       setPhones(initialPhones);
-      setTotalResults(initialPhones.length);
     }
   }, [fetchPhones, initialPhones]);
 
@@ -56,7 +45,7 @@ export default function PhoneList({ initialPhones }: PhoneListProps) {
     <div className="space-y-6">
       <SearchBar 
         onSearch={handleSearch}
-        resultsCount={searchQuery ? totalResults : undefined}
+        resultsCount={phones.length}
       />
 
       {loading && (
@@ -75,9 +64,9 @@ export default function PhoneList({ initialPhones }: PhoneListProps) {
             </div>
           ) : (
             <>
-              {searchQuery && (
+              {phones.length > 0 && (
                 <div className="text--sm text--gray-600">
-                  {totalResults} RESULTS
+                  {phones.length} RESULTS
                 </div>
               )}
 
