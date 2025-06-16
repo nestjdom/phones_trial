@@ -1,18 +1,22 @@
-import PhoneList from '@/components/PhoneList';
-import { phonesApi } from '@/data/phonesApi';
+import PhoneList from "./phone/(components)/PhoneList";
+import { phonesApi } from "@/data/phonesApi";
+import { Metadata } from "next";
 
-export default async function HomePage() {
-  const phones = await phonesApi.fetchAllProducts();
+export const metadata: Metadata = {
+  title: "Phone Store",
+  description: "Phone Store"
+};
+
+type Params = Promise<{ search: string }>;
+
+export default async function HomePage({ params }: { params: Params }) {
+  const { search } = await params;
+
+  const phones = await phonesApi.fetchAllProducts({ search: search as string });
 
   return (
-    <div className="page-container">
-      <div className="container py-8">
-        <div className="text-center home-header">
-          <h1 className="heading--h1">
-            📱MOBEST
-          </h1>
-        </div>
-
+    <div className='page-container'>
+      <div className='container py-8'>
         <PhoneList initialPhones={phones} />
       </div>
     </div>
