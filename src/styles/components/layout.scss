@@ -95,6 +95,21 @@
       grid-template-columns: repeat(5, minmax(0, 1fr));
     }
   }
+
+  a{
+    text-decoration: none;
+  }
+}
+
+.grid-with-borders {
+  gap: 1px;
+  background-color: var(--color-black);
+  padding: 1px;
+  
+  > li {
+    background-color: var(--color-white);
+    list-style: none;
+  }
 }
 
 // Flexbox utilities
