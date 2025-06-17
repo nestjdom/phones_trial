@@ -2,13 +2,14 @@
 
 import { useRouter } from 'next/navigation';
 
+export const defaultLabel = "← BACK";
+
 interface GoBackButtonProps {
   label?: string;
   className?: string;
 }
-
 export default function GoBackButton({ 
-  label = "← BACK", 
+  label = defaultLabel, 
   className = "btn-go-back" 
 }: GoBackButtonProps) {
   const router = useRouter();

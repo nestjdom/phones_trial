@@ -1,7 +1,6 @@
 import { texts } from '@/app/phone/(components)/PhoneList';
 import { test, expect } from '@playwright/test';
-
-const homeUrl = 'http://localhost:3000';
+import { homeUrl } from './consts';
 
 test('has everything rendered', async ({ page }) => {
   await page.goto(homeUrl);
@@ -13,6 +12,11 @@ test('has everything rendered', async ({ page }) => {
 });
 
 test('filters based on search params', async ({ page }) => {
+  await page.goto(`${homeUrl}/?search=a15`);
+  await expect(page.getByRole('listitem')).toHaveCount(1);
+});
+
+test('filters based on search term', async ({ page }) => {
   await page.goto(homeUrl);
   await expect(page.getByRole('listitem')).toHaveCount(24);
   
@@ -28,4 +32,7 @@ test('filters based on search params', async ({ page }) => {
   
   await expect(page.getByRole('listitem')).toHaveCount(0);
   await expect(page.getByText(texts.noResults)).toBeVisible();
+
+  await searchBox.clear();
+  await expect(page.getByRole('listitem')).toHaveCount(24);
 });
