@@ -32,7 +32,7 @@ export default function PhoneCard({ phone, priority = false }: PhoneCardProps) {
           </h3>
           <div className="card__price">
             <span className="card__price-value">
-              {phone.basePrice.toLocaleString()} EUR
+              {phone.basePrice} EUR
             </span>
           </div>
         </div>
