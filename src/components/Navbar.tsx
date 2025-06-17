@@ -17,7 +17,7 @@ export default function Navbar() {
           > 
             <Image
               src="/logo.svg"
-              alt="MOBEST"
+              alt="logo"
               width={77}
               height={30}
               priority
@@ -28,8 +28,13 @@ export default function Navbar() {
             href="/cart" 
             className="navbar__cart"
           >
-            <span className="navbar__cart-text">Carrito</span>
-            🛒
+            <Image
+              src="/cart.svg"
+              alt="cart"
+              width={24}
+              height={24}
+              priority
+            />
             {/* {isLoaded && getTotalItems() > 0 && (
               <span className="navbar__cart-count">
                 {getTotalItems()}
