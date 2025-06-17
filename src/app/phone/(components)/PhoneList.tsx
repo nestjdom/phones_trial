@@ -15,7 +15,7 @@ export default async function PhoneList({ search }: PhoneListProps) {
   const phones = await phonesApi.fetchAllProducts({ search });
 
   return (
-    <section className='space-y-6'>
+    <section className='space-y-12'>
       <>
         {phones.length === 0 ? (
           <div className='empty-state'>

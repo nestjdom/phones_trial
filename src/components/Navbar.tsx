@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 // import { useCartContext } from '@/context/CartContext';
 
 export default function Navbar() {
@@ -14,7 +15,13 @@ export default function Navbar() {
             href="/" 
             className="navbar__logo"
           > 
-            <span className="navbar__logo-text">MOBEST</span>
+            <Image
+              src="/logo.svg"
+              alt="MOBEST"
+              width={77}
+              height={30}
+              priority
+            />
           </Link>
 
           <Link 
