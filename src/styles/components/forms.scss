@@ -1,33 +1,23 @@
 .search-bar {
   width: 100%;
-  max-width: 42rem; // max-w-2xl
-  margin: 0 auto var(--spacing-6);
-  
+
   &__container {
     position: relative;
   }
-  
-  &__icon {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    padding-left: var(--spacing-3);
-    display: flex;
-    align-items: center;
-    pointer-events: none;
-  }
-  
+    
   &__input {
     display: block;
     width: 100%;
-    padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) 2.5rem; // pl-10
-    border: 1px solid var(--color-gray-300);
-    border-radius: var(--radius-lg);
+    padding: var(--spacing-2) var(--spacing-3) var(--spacing-2) 0; // pl-10
+    border-bottom: 1px solid var(--color-black);
+    border-top: none;
+    border-left: none;
+    border-right: none;
     line-height: var(--leading-5);
     background-color: var(--color-white);
     font-size: var(--text-base);
     transition: var(--transition-colors);
+    margin-bottom: var(--spacing-3);
     
     &::placeholder {
       color: var(--color-gray-500);
@@ -35,8 +25,8 @@
     
     &:focus {
       outline: none;
-      border-color: var(--color-blue-500);
-      box-shadow: 0 0 0 1px var(--color-blue-500);
+      border-color: var(--color-gray-500);
+      box-shadow: 0 0 0 1px var(--color-gray-500);
       
       &::placeholder {
         color: var(--color-gray-400);
@@ -44,60 +34,6 @@
     }
   }
   
-  &__info {
-    margin-top: var(--spacing-2);
-    font-size: var(--text-sm);
-    color: var(--color-gray-600);
-  }
-}
-
-.form-group {
-  margin-bottom: var(--spacing-4);
-  
-  &__label {
-    display: block;
-    font-size: var(--text-sm);
-    font-weight: 500;
-    color: var(--color-gray-700);
-    margin-bottom: var(--spacing-2);
-  }
-  
-  &__input {
-    display: block;
-    width: 100%;
-    padding: var(--spacing-3);
-    border: 1px solid var(--color-gray-300);
-    border-radius: var(--radius);
-    font-size: var(--text-base);
-    transition: var(--transition-colors);
-    
-    &:focus {
-      outline: none;
-      border-color: var(--color-blue-500);
-      box-shadow: 0 0 0 1px var(--color-blue-500);
-    }
-    
-    &--error {
-      border-color: var(--color-red-500);
-      
-      &:focus {
-        border-color: var(--color-red-500);
-        box-shadow: 0 0 0 1px var(--color-red-500);
-      }
-    }
-  }
-  
-  &__error {
-    margin-top: var(--spacing-1);
-    font-size: var(--text-sm);
-    color: var(--color-red-500);
-  }
-  
-  &__help {
-    margin-top: var(--spacing-1);
-    font-size: var(--text-sm);
-    color: var(--color-gray-500);
-  }
 }
 
 .selector {

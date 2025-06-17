@@ -23,9 +23,8 @@ export default function SearchBar({ placeholder = "Search for a smartphone..." }
   }, 300);
 
   return (
-    <div className='search-bar'>
+    <form className='search-bar'>
       <div className='search-bar__container'>
-        <div className='search-bar__icon'>🔍</div>
         <input
           role='searchbox'
           type='text'
@@ -35,6 +34,6 @@ export default function SearchBar({ placeholder = "Search for a smartphone..." }
           defaultValue={searchParams.get("search")?.toString()}
         />
       </div>
-    </div>
+    </form>
   );
 }
