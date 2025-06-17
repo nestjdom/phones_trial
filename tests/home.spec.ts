@@ -20,7 +20,7 @@ test('filters based on search params', async ({ page }) => {
   await searchBox.clear();
   await searchBox.fill('a15');
   
-  await expect(page.getByText('1 RESULTS')).toBeVisible({ timeout: 10000 });
+  await expect(page.getByText(/1 RESULTS/i)).toBeVisible({ timeout: 10000 });
   await expect(page.getByRole('listitem')).toHaveCount(1, { timeout: 10000 });
 
   await searchBox.clear();
