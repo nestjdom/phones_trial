@@ -37,6 +37,8 @@
 }
 
 .selector {
+  border: none;
+
   &__label {
     font-size: var(--text-xs);
     font-weight: 600;
@@ -49,5 +51,14 @@
   &__options {
     display: flex;
     gap: var(--spacing-3);
+  }
+  
+  // Hide the radio button input
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
   }
 } 

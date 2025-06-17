@@ -1,4 +1,4 @@
-import { StorageOption } from '@/types/phone';
+import { StorageOption } from "@/types/phone";
 
 interface StorageSelectorProps {
   storageOptions: StorageOption[];
@@ -6,31 +6,33 @@ interface StorageSelectorProps {
   onStorageChange: (storage: StorageOption) => void;
 }
 
-export default function StorageSelector({ 
-  storageOptions, 
-  selectedStorage, 
-  onStorageChange 
-}: StorageSelectorProps) {
+export default function StorageSelector({ storageOptions, selectedStorage, onStorageChange }: StorageSelectorProps) {
+  const handleRadioChange = (storage: StorageOption) => {
+    onStorageChange(storage);
+  };
+
   return (
-    <div className="selector">
-      <h3 className="selector__label">
-        Storage: How much space do you need?
-      </h3>
-      <div className="selector__options">
+    <fieldset role="radiogroup" className='selector'>
+      <legend className='selector__label'>Storage: How much space do you need?</legend>
+      <div className='selector__options'>
         {storageOptions.map((storage, index) => (
-          <button
+          <label
             key={storage.capacity + index}
-            onClick={() => onStorageChange(storage)}
             className={`storage-option ${
-              selectedStorage?.capacity === storage.capacity
-                ? 'storage-option--selected'
-                : ''
+              selectedStorage?.capacity === storage.capacity ? "storage-option--selected" : ""
             }`}
           >
+            <input
+              type='radio'
+              name='storage'
+              value={storage.capacity}
+              checked={selectedStorage?.capacity === storage.capacity}
+              onChange={() => handleRadioChange(storage)}
+            />
             {storage.capacity}
-          </button>
+          </label>
         ))}
       </div>
-    </div>
+    </fieldset>
   );
-} 
+}

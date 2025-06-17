@@ -1,4 +1,4 @@
-import { PhoneColor } from '@/types/phone';
+import { PhoneColor } from "@/types/phone";
 
 interface ColorSelectorProps {
   colorOptions: PhoneColor[];
@@ -6,31 +6,30 @@ interface ColorSelectorProps {
   onColorChange: (color: PhoneColor) => void;
 }
 
-export default function ColorSelector({ 
-  colorOptions, 
-  selectedColor, 
-  onColorChange 
-}: ColorSelectorProps) {
+export default function ColorSelector({ colorOptions, selectedColor, onColorChange }: ColorSelectorProps) {
   return (
-    <div className="selector">
-      <h3 className="selector__label">
-        Colour: Pick your favourite
-      </h3>
-      <div className="selector__options">
-        {colorOptions.map((color) => (
-          <button
+    <fieldset role='radiogroup' className='selector'>
+      <legend className='selector__label'>Color: Pick your favourite</legend>
+      <div className='selector__options'>
+        {colorOptions.map(color => (
+          <label
             key={color.name}
-            onClick={() => onColorChange(color)}
-            className={`color-option ${
-              selectedColor?.name === color.name
-                ? 'color-option--selected'
-                : ''
-            }`}
+            className={`color-option ${selectedColor?.name === color.name ? "color-option--selected" : ""}`}
             style={{ backgroundColor: color.hexCode }}
             title={color.name}
-          />
+          >
+            <input
+              type='radio'
+              name='phone-color'
+              value={color.name}
+              checked={selectedColor?.name === color.name}
+              onChange={() => onColorChange(color)}
+              className='color-option__input'
+            />
+            <span className='sr-only'>{color.name}</span>
+          </label>
         ))}
       </div>
-    </div>
+    </fieldset>
   );
-} 
+}
