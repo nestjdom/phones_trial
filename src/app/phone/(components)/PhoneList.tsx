@@ -7,9 +7,15 @@ interface PhoneListProps {
 }
 
 export default async function PhoneList({ search }: PhoneListProps) {
-  const phones = await phonesApi.fetchAllProducts({ search, limit: 20 });
+  const sanitizedSearch = search?.trim();
+  const isValidSearch = sanitizedSearch && sanitizedSearch.length >= 2 && sanitizedSearch.length <= 100;
 
-  if (phones.length === 0) return <EmptyList hasSearched={!!search} />;
+  const phones = await phonesApi.fetchAllProducts({
+    search: isValidSearch ? sanitizedSearch : undefined,
+    limit: 20
+  });
+
+  if (phones.length === 0) return <EmptyList hasSearched={!!isValidSearch} />;
 
   return (
     <section className='space-y-12'>
