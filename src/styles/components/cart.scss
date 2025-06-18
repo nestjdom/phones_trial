@@ -31,7 +31,7 @@
 }
 
 .cart-title {
-  font-size: var(--font-size-lg);
+  font-size: var(--text-lg);
   font-weight: var(--font-weight-medium);
   color: var(--color-gray-900);
   margin-bottom: var(--spacing-8);
@@ -41,8 +41,9 @@
 
 .cart-actions {
   margin-top: var(--spacing-12);
+  justify-content: space-between;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: var(--spacing-6);
 
   &__header {
@@ -56,20 +57,21 @@
   }
 }
 
+.cart-actions__right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-12);
+  justify-content: flex-end;
+}
+
 .cart-total {
-  text-align: right;
-
-  &__label {
-    font-size: var(--font-size-sm);
-    color: var(--color-gray-600);
-    margin-bottom: var(--spacing-1);
-  }
-
-  &__amount {
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-gray-900);
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+  font-size: var(--text-base);
+  color: var(--color-black);
 }
 
 .cart-item-card {
@@ -123,7 +125,7 @@
   }
   
   &__title {
-    font-size: var(--font-size-lg);
+    font-size: var(--text-lg);
     font-weight: var(--font-weight-bold);
     color: var(--color-gray-900);
     text-transform: uppercase;
@@ -131,13 +133,13 @@
   }
   
   &__subtitle {
-    font-size: var(--font-size-sm);
+    font-size: var(--text-sm);
     color: var(--color-gray-600);
     margin-bottom: var(--spacing-2);
   }
   
   &__price {
-    font-size: var(--font-size-lg);
+    font-size: var(--text-lg);
     font-weight: var(--font-weight-bold);
     color: var(--color-gray-900);
     margin-bottom: var(--spacing-4);
@@ -155,7 +157,7 @@
     }
     
     &-value {
-      font-size: var(--font-size-base);
+      font-size: var(--text-base);
       font-weight: var(--font-weight-medium);
       min-width: 2rem;
       text-align: center;
@@ -166,7 +168,7 @@
     background: none;
     border: none;
     color: var(--color-red-500);
-    font-size: var(--font-size-sm);
+    font-size: var(--text-sm);
     font-weight: var(--font-weight-medium);
     text-transform: capitalize;
     cursor: pointer;
