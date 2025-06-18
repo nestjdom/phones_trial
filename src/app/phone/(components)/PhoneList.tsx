@@ -1,6 +1,6 @@
 import EmptyList from "./EmptyList";
 import PhoneCard from "./PhoneCard";
-import { phonesApi } from "@/data/phonesApi";
+import { phonesApi } from "@/services/phonesApi";
 
 interface PhoneListProps {
   search?: string;

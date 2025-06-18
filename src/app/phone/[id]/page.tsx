@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { phonesApi } from "@/data/phonesApi";
+import { phonesApi } from "@/services/phonesApi";
 import PhoneDetailClient from "./PhoneDetailClient";
 
 interface PhoneDetailPageProps {
