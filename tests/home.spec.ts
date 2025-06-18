@@ -1,6 +1,7 @@
-import { texts } from '@/app/phone/(components)/PhoneList';
+import { texts } from '@/app/phone/(components)/EmptyList';
 import { test, expect } from '@playwright/test';
 import { homeUrl } from './consts';
+import { listLimit } from '@/app/phone/(components)/PhoneList';
 
 test('has everything rendered', async ({ page }) => {
   await page.goto(homeUrl);
@@ -8,7 +9,7 @@ test('has everything rendered', async ({ page }) => {
   await expect(page.getByRole('navigation')).toBeVisible();
   await expect(page.getByRole('searchbox')).toBeVisible();
   await expect(page.getByRole('list')).toBeVisible();
-  await expect(page.getByRole('listitem')).toHaveCount(24);
+  await expect(page.getByRole('listitem')).toHaveCount(listLimit);
 });
 
 test('filters based on search params', async ({ page }) => {
@@ -18,7 +19,7 @@ test('filters based on search params', async ({ page }) => {
 
 test('filters based on search term', async ({ page }) => {
   await page.goto(homeUrl);
-  await expect(page.getByRole('listitem')).toHaveCount(24);
+  await expect(page.getByRole('listitem')).toHaveCount(listLimit);
   
   const searchBox = page.getByRole('searchbox', { name: 'Search for a smartphone...' });
   await searchBox.clear();
@@ -34,5 +35,5 @@ test('filters based on search term', async ({ page }) => {
   await expect(page.getByText(texts.noResults)).toBeVisible();
 
   await searchBox.clear();
-  await expect(page.getByRole('listitem')).toHaveCount(24);
+  await expect(page.getByRole('listitem')).toHaveCount(listLimit);
 });

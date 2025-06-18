@@ -5,14 +5,14 @@ import { phonesApi } from "@/services/phonesApi";
 interface PhoneListProps {
   search?: string;
 }
-
+export const listLimit = 20;
 export default async function PhoneList({ search }: PhoneListProps) {
   const sanitizedSearch = search?.trim();
   const isValidSearch = sanitizedSearch && sanitizedSearch.length >= 2 && sanitizedSearch.length <= 100;
 
   const phones = await phonesApi.fetchAllProducts({
     search: isValidSearch ? sanitizedSearch : undefined,
-    limit: 20
+    limit: listLimit
   });
 
   if (phones.length === 0) return <EmptyList hasSearched={!!isValidSearch} />;

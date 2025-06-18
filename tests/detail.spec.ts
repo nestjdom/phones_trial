@@ -28,7 +28,7 @@ test("loads all details of the phone, navbar and a go back button", async ({ pag
 
   await expect(page.getByRole("heading", { name: "Similar Items" })).toBeVisible();
   await expect(page.getByRole("list")).toBeVisible();
-  await expect(page.getByRole("listitem")).toHaveCount(4);
+  await expect(page.getByRole("listitem")).toHaveCount(6);
 });
 
 test("add to cart button enables and price updates when a different storage is selected", async ({ page }) => {

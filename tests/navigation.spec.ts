@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { homeUrl } from './consts';
+import { listLimit } from '@/app/phone/(components)/PhoneList';
 
 test('navigates to the phone detail page and back', async ({ page }) => {
   await page.goto(homeUrl);
@@ -10,6 +11,6 @@ test('navigates to the phone detail page and back', async ({ page }) => {
   await page.getByRole('button', { name: 'Go back' }).click();
 
   await expect(page.getByRole('list')).toBeVisible();
-  await expect(page.getByRole('listitem')).toHaveCount(24);
+  await expect(page.getByRole('listitem')).toHaveCount(listLimit);
 });
 
