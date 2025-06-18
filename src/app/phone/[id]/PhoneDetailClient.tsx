@@ -8,13 +8,16 @@ import ProductImage from "./(components)/ProductImage";
 import ProductHeader from "./(components)/ProductHeader";
 import StorageSelector from "./(components)/StorageSelector";
 import ColorSelector from "./(components)/ColorSelector";
-import PriceDisplay from "./(components)/PriceDisplay";
 import SpecificationTable from "./(components)/SpecificationTable";
 import SimilarItems from "./(components)/SimilarItems";
 
 interface PhoneDetailClientProps {
   phone: PhoneDetail;
 }
+
+const getLowestPrice = (options: StorageOption[]) => {
+  return options.reduce((min, price) => (price.price < min ? price.price : min), options[0].price);
+};
 
 export default function PhoneDetailClient({ phone }: PhoneDetailClientProps) {
   const [selectedColor, setSelectedColor] = useState<PhoneColor>(phone.colorOptions[0]);
@@ -33,6 +36,10 @@ export default function PhoneDetailClient({ phone }: PhoneDetailClientProps) {
       alert("Producto añadido al carrito correctamente");
     });
 
+  const priceMessage = !selectedStorage?.price
+    ? `From ${getLowestPrice(phone.storageOptions)} EUR`
+    : `${selectedStorage.price} EUR`;
+
   return (
     <div className='page-container'>
       <div className='container py-6'>
@@ -43,7 +50,7 @@ export default function PhoneDetailClient({ phone }: PhoneDetailClientProps) {
             <ProductImage src={currentImage} alt={phone.name} />
 
             <div className='product-info'>
-              <ProductHeader name={phone.name} basePrice={phone.basePrice} />
+              <ProductHeader name={phone.name} priceMsg={priceMessage} />
 
               <StorageSelector
                 storageOptions={phone.storageOptions}
@@ -56,8 +63,6 @@ export default function PhoneDetailClient({ phone }: PhoneDetailClientProps) {
                 selectedColor={selectedColor}
                 onColorChange={handleColorChange}
               />
-
-              <PriceDisplay price={!selectedStorage?.price ? 0 : selectedStorage.price} />
 
               <AddToCartButton onAddToCart={handleAddToCart} />
             </div>
