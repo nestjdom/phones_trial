@@ -28,6 +28,7 @@ export default function StorageSelector({ storageOptions, selectedStorage, onSto
               value={storage.capacity}
               checked={selectedStorage?.capacity === storage.capacity}
               onChange={() => handleRadioChange(storage)}
+              aria-label={storage.capacity}
             />
             {storage.capacity}
           </label>
