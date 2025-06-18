@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "test": "npx playwright test",
-    "test-ct": "npx playwright test -c playwright-ct.config.ts"
+    "test-ct": "npx playwright test -c playwright-ct.config.ts",
+    "docker:run": "docker build -t phone-store . && docker stop phone-store-container 2>nul & docker rm phone-store-container 2>nul & docker run -d --name phone-store-container -p 3000:3000 phone-store && echo Phone store is running at http://localhost:3000",
+    "docker:stop": "docker stop phone-store-container 2>nul & docker rm phone-store-container 2>nul & echo Phone store stopped"
   },
   "dependencies": {
     "next": "15.3.3",
