@@ -52,6 +52,10 @@
     display: flex;
     gap: var(--spacing-3);
   }
+
+  &.storage-selector .selector__options{
+    gap: 0;
+  }
   
   // Style the radio button input to be accessible but visually hidden
   input[type="radio"] {

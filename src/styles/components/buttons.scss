@@ -159,7 +159,7 @@
 .color-option {
   width: 2rem;
   height: 2rem;
-  border-radius: var(--radius-full);
+  border-radius: none;
   border: 2px solid var(--color-gray-300);
   cursor: pointer;
   transition: var(--transition-transform);

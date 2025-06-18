@@ -12,7 +12,7 @@ export default function StorageSelector({ storageOptions, selectedStorage, onSto
   };
 
   return (
-    <fieldset role="radiogroup" className='selector'>
+    <fieldset role="radiogroup" className='selector storage-selector'>
       <legend className='selector__label'>Storage: How much space do you need?</legend>
       <div className='selector__options'>
         {storageOptions.map((storage, index) => (

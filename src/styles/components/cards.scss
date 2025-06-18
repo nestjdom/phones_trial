@@ -77,8 +77,6 @@
 
 // Phone detail card
 .phone-detail-card {
-  border: 2px solid var(--color-blue-400);
-  border-radius: var(--radius-lg);
   padding: var(--spacing-8);
   margin-bottom: var(--spacing-8);
 }
@@ -88,7 +86,7 @@
 // Product image component
 .product-image {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   
   &__wrapper {
     width: 20rem; // w-80
