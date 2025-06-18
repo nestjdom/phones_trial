@@ -2,7 +2,7 @@ import { StorageOption } from "@/types/phone";
 
 interface StorageSelectorProps {
   storageOptions: StorageOption[];
-  selectedStorage: StorageOption | null;
+  selectedStorage: StorageOption | undefined;
   onStorageChange: (storage: StorageOption) => void;
 }
 

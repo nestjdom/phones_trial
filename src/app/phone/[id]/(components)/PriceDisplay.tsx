@@ -10,7 +10,7 @@ export default function PriceDisplay({
   return (
     <div className={className}>
       <span className="price--large">
-        {price.toLocaleString()} EUR
+        {price} EUR
       </span>
     </div>
   );

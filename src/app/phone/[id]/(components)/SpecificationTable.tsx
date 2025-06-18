@@ -13,7 +13,7 @@ function SpecRow({ label, value }: SpecRowProps) {
   return (
     <tr>
       <td className="table__cell table__cell--label">
-        {label}
+        {label.toUpperCase()}
       </td>
       <td className="table__cell table__cell--value">
         {value}
@@ -31,20 +31,20 @@ export default function SpecificationTable({ phone }: SpecificationTableProps) {
       <div className="table-container__wrapper">
         <table className="table">
           <tbody className="table__body">
-            <SpecRow label="BRAND" value={phone.brand} />
-            <SpecRow label="MODEL" value={phone.name} />
+            <SpecRow label="Brand" value={phone.brand} />
+            <SpecRow label="Name" value={phone.name} />
             <SpecRow 
-              label="DESCRIPTION" 
+              label="Description" 
               value={`${phone.name} - Premium smartphone with advanced features`} 
             />
-            <SpecRow label="SCREEN" value={phone.specs.screen} />
-            <SpecRow label="RESOLUTION" value={phone.specs.resolution} />
-            <SpecRow label="PROCESSOR" value={phone.specs.processor} />
-            <SpecRow label="MAIN CAMERA" value={phone.specs.mainCamera} />
-            <SpecRow label="SELFIE CAMERA" value={phone.specs.selfieCamera} />
-            <SpecRow label="BATTERY" value={phone.specs.battery} />
+            <SpecRow label="Screen" value={phone.specs.screen} />
+            <SpecRow label="Resolution" value={phone.specs.resolution} />
+            <SpecRow label="Processor" value={phone.specs.processor} />
+            <SpecRow label="Main Camera" value={phone.specs.mainCamera} />
+            <SpecRow label="Selfie Camera" value={phone.specs.selfieCamera} />
+            <SpecRow label="Battery" value={phone.specs.battery} />
             <SpecRow label="OS" value={phone.specs.os} />
-            <SpecRow label="SCREEN REFRESH RATE" value={phone.specs.screenRefreshRate} />
+            <SpecRow label="Screen Refresh Rate" value={phone.specs.screenRefreshRate} />
           </tbody>
         </table>
       </div>
