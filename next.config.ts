@@ -1,8 +1,13 @@
 import type { NextConfig } from "next";
 
+const isDevelopment = process.env.BUILD_MODE === 'development';
+
 const nextConfig: NextConfig = {
   output: 'standalone',
+  
   images: {
+    // Only disable optimization in development builds
+    ...(isDevelopment && { unoptimized: true }),
     remotePatterns: [
       {
         protocol: 'https',
@@ -18,6 +23,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  
+  // Only override defaults when explicitly in development build mode
+  ...(isDevelopment && {
+    swcMinify: false,
+    compress: false,
+  }),
 };
 
 export default nextConfig;

@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "build:dev": "BUILD_MODE=development next build",
     "start": "next start",
+    "start:dev": "BUILD_MODE=development next start",
+    "start:prod": "NODE_ENV=production next start",
     "lint": "next lint",
     "test": "npx playwright test",
     "test-ct": "npx playwright test -c playwright-ct.config.ts",
