@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { CartContextType } from '@/context/CartContext';
-
+import EmptyCart from './(components)/EmptyCart';
 
 export default function CartPage() {
   const { cartItems = [], removeFromCart, updateQuantity, getTotalPrice } = {} as CartContextType;
@@ -16,36 +16,12 @@ export default function CartPage() {
     }
   };
 
-  if (cartItems.length === 0) {
-    return (
-      <div className="page-container">
-        <div className="container-md py-8">
-          <div className="text-center cart-empty-content">
-            <h1 className="heading--h2 mb-4">📱MOBEST</h1>
-            <div className="cart-empty">
-              <h2 className="text--lg text--medium text--gray-900 mb-4">CART (0)</h2>
-              <p className="text--gray-600 cart-empty-text">Tu carrito está vacío</p>
-              <Link
-                href="/"
-                className="btn btn--secondary"
-              >
-                Continue Shopping
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  if (cartItems.length === 0) return <EmptyCart />;
 
   return (
     <div className="page-container">
       <div className="container-lg py-6">
-        {/* Header */}
-        <div className="text-center cart-header">
-          <h1 className="heading--h2 mb-4">📱MOBEST</h1>
-        </div>
-
+   
         <div className="cart-content">
           <h2 className="cart-title">
             CART ({cartItems.length})
