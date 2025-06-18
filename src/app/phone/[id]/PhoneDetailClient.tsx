@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { PhoneDetail, PhoneColor, StorageOption } from "@/types/phone";
 import GoBackButton from "@/components/GoBackButton";
-import AddToCartButton from "@/components/AddToCartButton";
+import AddToCartButton from "@/app/phone/[id]/(components)/AddToCartButton";
 import ProductImage from "./(components)/ProductImage";
 import ProductHeader from "./(components)/ProductHeader";
 import StorageSelector from "./(components)/StorageSelector";

@@ -3,9 +3,7 @@ import { phonesApi } from "@/services/phonesApi";
 import PhoneDetailClient from "./PhoneDetailClient";
 
 interface PhoneDetailPageProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 }
 
 export default async function PhoneDetailPage({ params }: PhoneDetailPageProps) {

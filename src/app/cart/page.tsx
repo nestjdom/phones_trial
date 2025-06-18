@@ -2,7 +2,6 @@
 
 import { useCartContext } from "@/contexts/CartContext";
 import EmptyCart from "./(components)/EmptyCart";
-// import CartHeader from './(components)/CartHeader';
 import CartItem from "./(components)/CartItem";
 import CartActions from "./(components)/CartActions";
 import { CartItem as CartItemType } from "@/types/phone";
