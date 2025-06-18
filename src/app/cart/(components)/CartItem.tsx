@@ -23,7 +23,7 @@ export default function CartItem({ item, index, onRemove }: CartItemProps) {
           <p className='cart-item-card__subtitle'>
             {item.selectedStorage.capacity} | {item.selectedColor.name}
           </p>
-          <p className='cart-item-card__price'>{totalItemPrice.toLocaleString()} EUR</p>
+          <p className='cart-item-card__price'>{totalItemPrice} EUR</p>
         </div>
 
         <button onClick={() => onRemove(index)} className='cart-item-card__remove-btn'>

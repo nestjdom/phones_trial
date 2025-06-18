@@ -19,6 +19,7 @@ export default function ProductImage({
           alt={alt}
           width={400} 
           height={256}
+          priority
         />
       </div>
     </div>

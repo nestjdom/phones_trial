@@ -14,7 +14,7 @@ export default function CartActions({ totalPrice }: CartActionsProps) {
       <div className='cart-actions__right'>
         <div className='cart-total'>
           <span className='cart-total__label'>TOTAL</span>
-          <span className='cart-total__amount'>{totalPrice.toLocaleString()} EUR</span>
+          <span className='cart-total__amount'>{totalPrice} EUR</span>
         </div>
 
         <button
