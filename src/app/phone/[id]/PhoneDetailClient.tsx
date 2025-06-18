@@ -10,7 +10,7 @@ import StorageSelector from "./(components)/StorageSelector";
 import ColorSelector from "./(components)/ColorSelector";
 import SpecificationTable from "./(components)/SpecificationTable";
 import SimilarItems from "./(components)/SimilarItems";
-import { useCart } from "@/hooks/useCart";
+import { useCartContext } from "@/contexts/CartContext";
 
 interface PhoneDetailClientProps {
   phone: PhoneDetail;
@@ -25,7 +25,7 @@ export default function PhoneDetailClient({ phone }: PhoneDetailClientProps) {
   const [selectedStorage, setSelectedStorage] = useState<StorageOption | undefined>(undefined);
   const [currentImage, setCurrentImage] = useState<string>(phone.colorOptions[0]?.imageUrl || "");
 
-  const { addToCart, error } = useCart();
+  const { addToCart, error } = useCartContext();
 
   const handleColorChange = (color: PhoneColor) => {
     setSelectedColor(color);

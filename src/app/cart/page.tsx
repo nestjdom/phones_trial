@@ -1,6 +1,6 @@
 "use client";
 
-import { useCart } from "@/hooks/useCart";
+import { useCartContext } from "@/contexts/CartContext";
 import EmptyCart from "./(components)/EmptyCart";
 // import CartHeader from './(components)/CartHeader';
 import CartItem from "./(components)/CartItem";
@@ -8,7 +8,7 @@ import CartActions from "./(components)/CartActions";
 import { CartItem as CartItemType } from "@/types/phone";
 
 export default function CartPage() {
-  const { cartItems, removeFromCart, getTotalPrice } = useCart();
+  const { cartItems, removeFromCart, getTotalPrice } = useCartContext();
 
   if (cartItems.length === 0) return <EmptyCart />;
 

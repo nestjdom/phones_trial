@@ -23,11 +23,11 @@ export function useLocalStorage<T>(key: string, defaultValue: T) {
     try {
       setError('');
 
-      const valueToStore = newValue instanceof Function ? newValue(value) : newValue;
-
-      setValue(valueToStore);
-
-      localStorage.setItem(key, JSON.stringify(valueToStore));
+      setValue(prevValue => {
+        const valueToStore = newValue instanceof Function ? newValue(prevValue) : newValue;
+        localStorage.setItem(key, JSON.stringify(valueToStore));
+        return valueToStore;
+      });
     } catch (err) {
       console.error(`Error saving ${key} to localStorage:`, err);
       setError(`Failed to save ${key} to localStorage`);
