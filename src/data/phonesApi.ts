@@ -27,7 +27,7 @@ class PhonesApi {
       return await res.json();
     } catch (error) {
       console.error('Error fetching PhonesApi:', error);
-      throw error;
+      return undefined;
     }
   }
 }
