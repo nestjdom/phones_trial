@@ -6,7 +6,6 @@
 
   &:hover {
     box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
   }  
 
   &__content {
@@ -113,6 +112,7 @@
 
 
 .similar-items {
+  background: var(--color-white);
   
   &__list {
     display: flex;

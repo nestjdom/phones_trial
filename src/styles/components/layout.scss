@@ -102,12 +102,10 @@
 }
 
 .grid-with-borders {
-  gap: 1px;
-  background-color: var(--color-black);
   padding: 1px;
   
-  > li {
-    background-color: var(--color-white);
+  li {
+    border: 1px solid black;
     list-style: none;
   }
 }
