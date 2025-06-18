@@ -1,51 +1,33 @@
-'use client';
+"use client";
 
-import { useCart } from '@/hooks/useCart';
-import EmptyCart from './(components)/EmptyCart';
+import { useCart } from "@/hooks/useCart";
+import EmptyCart from "./(components)/EmptyCart";
 // import CartHeader from './(components)/CartHeader';
-import CartItem from './(components)/CartItem';
-import CartActions from './(components)/CartActions';
-import { CartItem as CartItemType } from '@/types/phone';
+import CartItem from "./(components)/CartItem";
+import CartActions from "./(components)/CartActions";
+import { CartItem as CartItemType } from "@/types/phone";
 
 export default function CartPage() {
-  const { cartItems, removeFromCart, updateQuantity, getTotalPrice } = useCart();
-
-  const handleQuantityChange = (index: number, newQuantity: number) => {
-    if (newQuantity < 1) {
-      removeFromCart(index);
-    } else {
-      updateQuantity(index, newQuantity);
-    }
-  };
+  const { cartItems, removeFromCart, getTotalPrice } = useCart();
 
   if (cartItems.length === 0) return <EmptyCart />;
 
   return (
-    <div className="page-container">
-      <div className="container-lg py-6">
-        {/* <CartHeader /> */}
-   
-        <div className="cart-content">
-          <h2 className="cart-title">
-            CART ({cartItems.length})
-          </h2>
-
-          {/* Cart Items */}
-          <div className="space-y-8">
+    <section className='page-container'>
+      <div className='container-lg py-6'>
+        <div className='cart-content'>
+          <h2 className='cart-title'>CART ({cartItems.length})</h2>
+          <ul className='space-y-8'>
             {cartItems.map((item: CartItemType, index: number) => (
-              <CartItem
-                key={index}
-                item={item}
-                index={index}
-                onQuantityChange={handleQuantityChange}
-                onRemove={removeFromCart}
-              />
+              <li key={`${item.phone.id}-${index}`} className='cart-item-card'>
+                <CartItem item={item} index={index} onRemove={removeFromCart} />
+              </li>
             ))}
-          </div>
+          </ul>
 
           <CartActions totalPrice={getTotalPrice()} />
         </div>
       </div>
-    </div>
+    </section>
   );
-} 
+}
