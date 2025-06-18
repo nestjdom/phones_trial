@@ -12,15 +12,12 @@ export function useLocalStorage<T>(key: string, defaultValue: T) {
       if (item !== null) {
         const parsedValue = JSON.parse(item);
         setValue(parsedValue);
-      } else {
-        setValue(defaultValue);
       }
     } catch (err) {
       console.error(`Error loading ${key} from localStorage:`, err);
       setError(`Failed to load ${key} from localStorage`);
-      setValue(defaultValue);
     }
-  }, [key, defaultValue]);
+  }, [key]);
 
   const setStoredValue = (newValue: T | ((prevValue: T) => T)) => {
     try {
