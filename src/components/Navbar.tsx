@@ -12,11 +12,11 @@ export default function Navbar() {
       <div className='navbar__container'>
         <div className='navbar__content'>
           <Link href='/' className='navbar__logo'>
-            <Image src='/logo.svg' alt='logo' width={77} height={30} priority />
+            <Image src='/logo.svg' alt='logo' width={77} height={30} />
           </Link>
 
           <Link href='/cart' className='navbar__cart'>
-            <Image src='/cart.svg' alt='cart' width={24} height={24} priority />
+            <Image src='/cart.svg' alt='cart' width={24} height={24} />
             <span className='navbar__cart-count'>{cartItems.length}</span>
           </Link>
         </div>
