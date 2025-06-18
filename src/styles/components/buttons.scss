@@ -80,6 +80,30 @@
     }
   }
   
+  &--dark {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: none;
+    padding: var(--spacing-4) var(--spacing-8);
+    font-size: var(--text-base);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06rem;
+    border-radius: 0;
+    transition: var(--transition-colors);
+    
+    &:hover:not(:disabled) {
+      background-color: var(--color-gray-900);
+    }
+    
+    &:disabled {
+      color: var(--color-gray-500);
+      background-color: var(--color-gray-300);
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+  
   // Full width
   &--full {
     width: 100%;
