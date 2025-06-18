@@ -43,12 +43,15 @@ export interface StorageOption {
   price: number;
 }
 
+
 export interface CartItem {
-  phone: PhoneDetail;
-  selectedColor: PhoneColor;
+  phone: Omit<PhoneBase, 'basePrice'>;
   selectedStorage: StorageOption;
+  selectedColor: PhoneColor;
   quantity: number;
 }
+
+
 
 export interface SearchResponse {
   phones: PhoneDetail[];

@@ -10,6 +10,7 @@ import StorageSelector from "./(components)/StorageSelector";
 import ColorSelector from "./(components)/ColorSelector";
 import SpecificationTable from "./(components)/SpecificationTable";
 import SimilarItems from "./(components)/SimilarItems";
+import { useCart } from "@/hooks/useCart";
 
 interface PhoneDetailClientProps {
   phone: PhoneDetail;
@@ -24,6 +25,8 @@ export default function PhoneDetailClient({ phone }: PhoneDetailClientProps) {
   const [selectedStorage, setSelectedStorage] = useState<StorageOption | undefined>(undefined);
   const [currentImage, setCurrentImage] = useState<string>(phone.colorOptions[0]?.imageUrl || "");
 
+  const { addToCart, error } = useCart();
+
   const handleColorChange = (color: PhoneColor) => {
     setSelectedColor(color);
     setCurrentImage(color.imageUrl);
@@ -33,12 +36,24 @@ export default function PhoneDetailClient({ phone }: PhoneDetailClientProps) {
     selectedColor &&
     selectedStorage &&
     (() => {
-      alert("Producto añadido al carrito correctamente");
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { basePrice, ...rest } = phone;
+      const cartItem = {
+        phone: rest,
+        selectedStorage,
+        selectedColor,
+        quantity: 1
+      };
+      addToCart(cartItem);
     });
 
   const priceMessage = !selectedStorage?.price
     ? `From ${getLowestPrice(phone.storageOptions)} EUR`
     : `${selectedStorage.price} EUR`;
+
+  if (error) {
+    return <div className='error-state'>{error}</div>;
+  }
 
   return (
     <div className='page-container'>
