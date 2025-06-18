@@ -12,7 +12,7 @@ export const texts = {
 }
 
 export default async function PhoneList({ search }: PhoneListProps) {
-  const phones = await phonesApi.fetchAllProducts({ search });
+  const phones = await phonesApi.fetchAllProducts({ search, limit: 20 });
 
   return (
     <section className='space-y-12'>
