@@ -11,7 +11,7 @@ interface FetchAllProductsParams {
 
 class PhonesApi {
   async fetchAllProducts(params?: FetchAllProductsParams): Promise<Phone[]> {
-    const filteredParams = Object.fromEntries(Object.entries(params || {}).filter(([_, value]) => value !== undefined));
+    const filteredParams = Object.fromEntries(Object.entries(params || {}).filter(([, value]) => value !== undefined));
     const hasParams = Object.keys(filteredParams).length > 0;
     const url = `${BASE_URL}/products${
       hasParams ? `?${new URLSearchParams(filteredParams as Record<string, string>).toString()}` : ""
