@@ -143,7 +143,7 @@ npm run docker:stop
 
 ### Testing Unitario (Playwright)
 
-A pesar de que soy un enamorado de React Testing Library, me temo que para server components y React 19 la librería deja mucho que desear. Habría que estar mockeando demasiadas características (incluso componentes dentro del componente) que al final los tests de esta manera perderían gran parte de su valor. Por esta razón se ha decidido implementar testing unitarios con la funcionalidad Test Components de Playwright ([https://playwright.dev/docs/test-components](https://playwright.dev/docs/test-components)). 
+A pesar de que soy un enamorado de React Testing Library, me temo que para server components y React 19 la librería deja mucho que desear. Habría que estar mockeando demasiadas características (incluso componentes dentro del componente) que al final los tests de esta manera perderían gran parte de su valor. Por esta razón se ha decidido implementar testing unitarios con la funcionalidad Test Components de Playwright ([https://playwright.dev/docs/test-components](https://playwright.dev/docs/test-components)).
 
 Como ejemplo de test unitario puedes consultar el fichero [`src/app/phone/(components)/PhoneCard.spec.tsx`](./src/app/phone/(components)/PhoneCard.spec.tsx) en este repositorio. Aunque no todos los componentes están testeados unitariamente debido a limitaciones de tiempo, la configuración está preparada para ello.
 
@@ -253,8 +253,12 @@ El proyecto funciona sin configuración adicional, utilizando datos mock incluid
 5. **API**: Endpoints RESTful para búsqueda y detalles
 6. **Persistencia**: localStorage para el carrito
 7. **Responsivo**: Diseño adaptable a móviles y desktop
-8. **Testing**: Cobertura unitaria y E2E
+8. **Testing**: Cobertura E2E y ejemplo de unitario
 9. **Docker**: Containerización completa
+
+## 📝 Notas de Desarrollo
+
+**Priorización de Funcionalidad**: Debido a limitaciones de tiempo, se priorizó la implementación completa de funcionalidades sobre el diseño visual. El enfoque principal fue asegurar que todas las características requeridas funcionaran correctamente, con un diseño funcional que cumpliera con los objetivos del proyecto.
 
 ## 👥 Autor
 
